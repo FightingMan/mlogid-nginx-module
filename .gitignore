@@ -1,0 +1,16 @@
+.libs
+*.t_
+*.swp
+*.slo
+*.la
+*.swo
+*.lo
+*~
+*.o
+print.txt
+.rsync
+*.tar.gz
+tags
+t/servroot/
+Makefile
+nginx
