@@ -1,10 +1,6 @@
 /**
- * Description add mlogid variable
- *
- * @file ngx_http_mlogid_module.c
- * @date 2015-09-09 20:33:15
- * @author jianghua <jianghua01@baidu.com>
- * @copyright (c) 2015 Baidu Inc.
+ * @author jianghua <gianjason@gmail.com>
+ * @copyright (c) FightingMan
  */
 
 #ifndef DDEBUG
