@@ -1,5 +1,5 @@
 /**
- * @author jianghua <gianjason@gmail.com>
+ * @author jianghua <Mr.CoreDumped@gmail.com>
  * @copyright (c) FightingMan
  */
 
