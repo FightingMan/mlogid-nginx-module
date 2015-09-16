@@ -19,7 +19,7 @@
 
 #define MD5_BHASH_LEN 16
 #define MD5_HASH_LEN 16
-#define HOSTNAME_LEN 30
+#define HOSTNAME_LEN 32
 #define HOSTNAME_HASH_LEN 48
 
 typedef struct {
@@ -125,8 +125,7 @@ ngx_http_mlogid_set_variable(ngx_http_request_t *r,
 	}
 	dd("hash value %s\n", hasht);
 
-    ngx_snprintf(hashr, HOSTNAME_HASH_LEN - 2, "%s%s", hostname, hasht);
-	hashr[HOSTNAME_HASH_LEN - 1] = '\0';
+    ngx_snprintf(hashr, HOSTNAME_HASH_LEN, "%s%s", hostname, hasht);
 	dd("last value %s\n", hashr);
     ngx_memcpy(v->data, hashr, v->len);
 
@@ -175,16 +174,15 @@ ngx_http_mlogid_add_variables(ngx_conf_t *cf)
     }
 
 #ifdef IN_BAIDU
-	if ((cf->cycle->hostname.len - 14) > HOSTNAME_LEN) {
+	if ((cf->cycle->hostname.len - 10) > HOSTNAME_LEN) {
 		ngx_snprintf(hostname, HOSTNAME_LEN, "%s", cf->cycle->hostname.data);
 	} else {
-		ngx_snprintf(hostname, cf->cycle->hostname.len - 14, "%s", cf->cycle->hostname.data);
+		ngx_snprintf(hostname, cf->cycle->hostname.len - 10, "%s", cf->cycle->hostname.data);
 	}
 #else
 	ngx_snprintf(hostname, HOSTNAME_LEN, "%s", cf->cycle->hostname.data);
 #endif
 
-	hostname[HOSTNAME_LEN - 1] =  '\0';
     var->get_handler = ngx_http_mlogid_set_variable;
 
     return NGX_OK;
